@@ -1,4 +1,4 @@
-package com.azizbek.mygithub.ui.home
+package com.azizbek.mygithub.ui.popular
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,15 +13,16 @@ import com.azizbek.mygithub.adapter.UserRepoAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.my_lodaer_item.*
 
-class HomeFragment : Fragment() {
+class PopularRepoFragment : Fragment() {
 
     private var avatarUrl: String?=null
 
-    private lateinit var homeviewmodel:HomeViewModel
+    private lateinit var homeviewmodel:popularRepoViewModel
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        homeviewmodel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeviewmodel = ViewModelProvider(this).get(popularRepoViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -33,12 +34,6 @@ class HomeFragment : Fragment() {
             avatarUrl = bundle.getString("photoUrl")
         }
 
-        homeviewmodel.responseHaveData().observe(viewLifecycleOwner, {
-            dotsLoader.visibility = it
-            if (it == View.GONE) {
-                home_recyclerView.visibility=View.VISIBLE
-            }
-        })
 
         getData("kotlin")
 
@@ -49,6 +44,7 @@ class HomeFragment : Fragment() {
             .into(account_image)
 
         image_filter.setOnClickListener {
+
             val popupMenu=PopupMenu(context,image_filter)
 
             popupMenu.menuInflater.inflate(R.menu.popup, popupMenu.menu)
@@ -69,15 +65,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun getData(language:String){
-        homeviewmodel.getRecyclerListData("language:$language","stars").observe(viewLifecycleOwner, {
+        dotsLoader.visibility=View.VISIBLE
+        home_recyclerView.visibility=View.GONE
+        homeviewmodel.getRepo(language,"stars").observe(viewLifecycleOwner, {
             if (it != null) {
                 home_recyclerView.apply {
                     setHasFixedSize(true)
                     layoutManager = LinearLayoutManager(context)
                     adapter = UserRepoAdapter(context, it.items)
+                    dotsLoader.visibility=View.GONE
+                    home_recyclerView.visibility=View.VISIBLE
                 }
             }
         });
-        homeviewmodel.makeApiCall()
+
     }
 }

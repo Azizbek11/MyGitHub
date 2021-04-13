@@ -36,14 +36,14 @@ class SearchViewModel : ViewModel() {
             override fun onResponse(call: Call<PopularRepo>, response: Response<PopularRepo>) {
                 if (response.isSuccessful) {
                     recyclerListData.postValue(response.body())
-                    haveData.postValue(View.GONE)
+                    haveData.value=View.GONE
 
                 }else{
                     recyclerListData.postValue(null)
                 }
             }
             override fun onFailure(call: Call<PopularRepo>, t: Throwable) {
-                recyclerListData.postValue(null)
+                recyclerListData.value=null
             }
         })
     }

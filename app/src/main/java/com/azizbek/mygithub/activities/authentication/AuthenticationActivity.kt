@@ -1,4 +1,4 @@
-package com.azizbek.mygithub.authentication
+package com.azizbek.mygithub.activities.authentication
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +13,7 @@ import android.widget.Toast
 import android.content.Intent
 import android.content.SharedPreferences
 import android.view.View
-import com.azizbek.mygithub.MainActivity
+import com.azizbek.mygithub.activities.MainActivity
 import java.lang.Exception
 import java.util.*
 

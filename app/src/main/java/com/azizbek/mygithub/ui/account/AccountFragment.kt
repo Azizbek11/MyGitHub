@@ -12,16 +12,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizbek.mygithub.R
-import com.azizbek.mygithub.adapter.UserRepoAdapter
-import com.azizbek.mygithub.authentication.AuthenticationActivity
+import com.azizbek.mygithub.activities.authentication.AuthenticationActivity
 import com.azizbek.mygithub.databinding.FragmentAccountBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_account.*
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.my_lodaer_item.*
 
 class AccountFragment : Fragment() {
 
@@ -44,8 +42,8 @@ class AccountFragment : Fragment() {
 
         val sharedPreferences:SharedPreferences = requireContext().getSharedPreferences("githubname", Context.MODE_PRIVATE)
         nameUrl=sharedPreferences.getString("githubUserName",null )
-        getData(nameUrl.toString())
-
+        getData()
+        githublinkarea.visibility = View.GONE
         signOut.setOnClickListener {
             val popupMenu= PopupMenu(context,signOut)
 
@@ -69,18 +67,18 @@ class AccountFragment : Fragment() {
 
     }
 
-    private fun getData(userName:String){
-        accountViewModel.getUserData(userName).observe(viewLifecycleOwner, {
+    private fun getData() {
+        accountViewModel.getUserData().observe(viewLifecycleOwner, {
             if (it != null) {
                 githubusername.text= it.name
                 githubusernamebutton.text="github.com/${it.login}"
                 username.text=it.login
 
                 Glide.with(this)
-                        .load(it.avatarUrl)
-                        .placeholder(R.drawable.ic_baseline_account_circle_24)
-                        .apply(RequestOptions().circleCrop())
-                        .into(user_image_header)
+                    .load(it.avatarUrl)
+                    .placeholder(R.drawable.ic_baseline_account_circle_24)
+                    .apply(RequestOptions().circleCrop())
+                    .into(user_image_header)
 
                 bio.text=it.bio
                 followCount.text=it.followingCount.toString()
@@ -88,10 +86,13 @@ class AccountFragment : Fragment() {
                 publicRepos.text=it.publicRepos.toString()
                 myLocation.text=it.location
 
+                githublinkarea.visibility = View.VISIBLE
+                dotsLoader.visibility=View.GONE
+
                 Toast.makeText(context,it.login+"",Toast.LENGTH_SHORT).show()
-                }
+
+            }
 
         });
-        accountViewModel.makeApiCall()
     }
 }

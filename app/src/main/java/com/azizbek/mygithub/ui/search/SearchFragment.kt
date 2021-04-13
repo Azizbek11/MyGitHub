@@ -1,24 +1,17 @@
 package com.azizbek.mygithub.ui.search
 
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.PopupMenu
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azizbek.mygithub.R
 import com.azizbek.mygithub.adapter.UserRepoAdapter
-import com.azizbek.mygithub.ui.home.HomeViewModel
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.home_recyclerView
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.my_lodaer_item.*
 
 class SearchFragment : Fragment() {
 
@@ -47,7 +40,7 @@ class SearchFragment : Fragment() {
         }
 
         searchViewModel.responseHaveData().observe(viewLifecycleOwner, {
-            dotLoader.visibility=it
+            dotsLoader.visibility=it
             if (it == View.GONE) {
                 scroll_view.visibility=View.VISIBLE
             }
@@ -55,7 +48,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun getData(language:String){
-        dotLoader.visibility=View.VISIBLE
+        dotsLoader.visibility=View.VISIBLE
         scroll_view.visibility=View.INVISIBLE
         searchViewModel.getRecyclerListData(language,"stars").observe(viewLifecycleOwner, {
             if (it != null) {
