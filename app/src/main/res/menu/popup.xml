@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <item
+       android:id="@+id/kotlin"
+       android:title="@string/kotlin"/>
+
+   <item
+       android:id="@+id/java"
+       android:title="@string/java"/>
+
+    <item
+        android:id="@+id/php"
+        android:title="@string/php"/>
+
+    <item
+        android:id="@+id/python"
+        android:title="@string/python"/>
+
+    <item
+        android:id="@+id/javascript"
+        android:title="@string/javascript"/>
+
+    <item
+        android:id="@+id/swift"
+        android:title="@string/swift"/>
+
+</menu>

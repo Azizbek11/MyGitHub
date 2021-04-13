@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">MyGitHub</string>
+    <string name="title_home">Home</string>
+    <string name="title_account">My Account</string>
+    <string name="title_repositories">Search Repos</string>
+    <string name="popular_repositories">Popular Repositories</string>
+    <string name="english_for_it">English-for-IT</string>
+    <string name="_100">100</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="java">Java</string>
+    <string name="php">Php</string>
+    <string name="python">Python</string>
+    <string name="javascript">JavaScript</string>
+    <string name="swift">Swift</string>
+    <string name="email">azizismoilov495@gmail.com</string>
+    <string name="username">UserName</string>
+    <string name="your_location">Your Location</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="starred">My Public Repos</string>
+    <string name="github_com">github.com/Azizbek11</string>
+    <string name="bio">I am android developer. i am from Uzbekistan. yurtim senga sher bitdim bugun. qiyosingni topmadim aslo. salom men bu men</string>
+    <string name="githubusername">Azizbek11</string>
+    <string name="sign_out">Sign Out</string>
+</resources>

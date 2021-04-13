@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.home.HomeFragment">
+
+   <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+       android:id="@+id/dotsLoader"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       app:loader_bigCircleRadius="35dp"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:loader_animDur="100"
+       app:loader_defaultColor="@color/purple_default"
+       app:loader_firstShadowColor="@color/pink_selected"
+       app:loader_secondShadowColor="@color/pink_default"
+       app:loader_selectedColor="@color/purple_selected"
+       app:loader_showRunningShadow="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/windowBackground">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/account_image"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/purple_700"
+                app:civ_border_overlay="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/title_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/popular_repositories"
+                android:layout_toRightOf="@id/account_image"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@id/account_image"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="#000"
+                android:layout_marginStart="10dp" />
+
+            <ImageView
+                android:id="@+id/image_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_filter_list_24"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#FDFCFC"
+        app:layout_constraintTop_toBottomOf="@id/action_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        tools:listitem="@layout/row_repo"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
