@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">MyGitHub</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">PopularRepo</string>
     <string name="title_account">My Account</string>
     <string name="title_repositories">Search Repos</string>
     <string name="popular_repositories">Popular Repositories</string>
@@ -22,4 +22,5 @@
     <string name="bio">I am android developer. i am from Uzbekistan. yurtim senga sher bitdim bugun. qiyosingni topmadim aslo. salom men bu men</string>
     <string name="githubusername">Azizbek11</string>
     <string name="sign_out">Sign Out</string>
+    <string name="if_internet_net">Упс...Попробуйте снова!</string>
 </resources>
